@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Украина</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/draggabilly.pkgd.min.js"></script>
+  <script src="js/db.js"></script>
+</head>
+<body>
+<div class="ave">
+  <div class="ave__title">Введите email</div>
+  <input type="email" maxlength="40" autocomplete="off" onkeyup="checkValidate(this)" autofocus class="ave__input">
+  <div class="ave__button button" onclick="logIn()">Продолжить</div>
+</div>
+<div class="header">
+  <div class="header__menu" onclick="toggleHamburger()"></div>
+  <div class="header__title">Кроссворд</div>
+</div>
+<div class="main">
+  <div class="task">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Ответьте на вопросы. Впишите решение в соответствующие ячейки.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page crossword left">
+      <div class="cross__question"></div>
+      <div class="cross__word">
+        <div class="word1 vertical">
+          <input placeholder="1" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="1to5" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to3').value = this.value" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word2 horizon">
+          <input id="2to1" placeholder="2" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('3to6').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="2to3" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('1to5').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="2to5" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('6to8').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="2to7" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('5to6').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="2to9" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('4to3').value = this.value" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word3 vertical">
+          <input placeholder="3" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="3to6" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to1').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word4 vertical">
+          <input placeholder="4" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="4to3" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to9').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word5 vertical">
+          <input placeholder="5" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="5to6" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to7').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+        <div class="word6 vertical">
+          <input placeholder="6" type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input id="6to8" type="text" maxlength="1" spellcheck="false" onkeyup="document.getElementById('2to5').value = this.value;crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onkeyup="crossJump(this)" onclick="this.select()" class="cross__input">
+          <input type="text" maxlength="1" spellcheck="false" onclick="this.select()" class="cross__input">
+        </div>
+      </div>
+      <div class="cross__button button" onclick="scoreButton(0);crossCheckWord()">Нажмите для завершения!</div>
+    </div>
+  </div>
+
+
+  <div class="task hidden">
+    <div class="lock hidden" style="z-index: 3"></div>
+    <div class="info" style="z-index: 2">
+      <div class="info__title">Определите, к какой категории относится сорт винограда и перетащите его на соответствующее поле.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page any left" style="z-index: 1">
+      <div class="any__grid">
+        <div class="any__zone">
+          <div class="any__column" style="background-color: #FFC09F">Белые</div>
+          <div class="any__column" style="background-color: #c2967a">Красные</div>
+          <div class="any__column" style="background-color: #846653">Автохтоны</div>
+        </div>
+        <div class="any__move"></div>
+      </div>
+      <div class="button" onclick="scoreButton(1)">Нажмите для завершения!</div>
+    </div>
+  </div>
+  <!-- вставить задания -->
+  
+  <div class="task hidden">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Прочитайте внимательно вопрос. Дайте развёрнутый ответ в комментариях к уроку.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page asked left">
+      <div class="asked__title"></div>
+      <div class=" button" onclick="endButton()">Дать ответ!</div>
+    </div>
+  </div>
+</div>
+<div class="footer"></div>
+<div class="menu menu__off">
+  <div class="menu__content"></div>
+</div>
+<script src="js/crossword.js"></script>
+<script src="js/sort_any.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
